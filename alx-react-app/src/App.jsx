@@ -1,10 +1,10 @@
 import WelcomeMessage from './components/WelcomeMessage'
+import UserProfile from './components/UserProfile'
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
-// ✅ Import new components
 import Header from './Header'
 import MainContent from './MainContent'
 import Footer from './Footer'
@@ -24,7 +24,6 @@ function App() {
       </div>
       <h1>Vite + React</h1>
 
-      {/* ✅ Your custom component from Task 1 */}
       <WelcomeMessage />
 
       <div className="card">
@@ -39,10 +38,16 @@ function App() {
         Click on the Vite and React logos to learn more
       </p>
 
-      {/* ✅ New components from Task 2 */}
       <Header />
       <MainContent />
       <Footer />
+
+      {/* ✅ New UserProfile Component */}
+      <UserProfile
+        name="Alice"
+        age="25"
+        bio="Loves hiking, photography, and exploring new places."
+      />
     </>
   )
 }

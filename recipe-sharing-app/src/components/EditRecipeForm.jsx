@@ -5,7 +5,9 @@ import { useParams, useNavigate } from 'react-router-dom';
 const EditRecipeForm = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const recipe = useRecipeStore((state) => state.recipes.find((r) => r.id === id));
+  const recipe = useRecipeStore((state) =>
+    state.recipes.find((r) => r.id === id)
+  );
   const updateRecipe = useRecipeStore((state) => state.updateRecipe);
 
   const [title, setTitle] = useState('');
@@ -53,7 +55,11 @@ const EditRecipeForm = () => {
       />
       <br />
       <button type="submit">Save Changes</button>
-      <button type="button" onClick={() => navigate(-1)} style={{ marginLeft: 8 }}>
+      <button
+        type="button"
+        onClick={() => navigate(-1)}
+        style={{ marginLeft: 8 }}
+      >
         Cancel
       </button>
     </form>

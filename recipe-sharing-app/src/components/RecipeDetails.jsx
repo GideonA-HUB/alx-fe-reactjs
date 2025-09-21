@@ -4,7 +4,9 @@ import DeleteRecipeButton from './DeleteRecipeButton';
 
 const RecipeDetails = () => {
   const { id } = useParams();
-  const recipe = useRecipeStore((state) => state.recipes.find((r) => r.id === id));
+  const recipe = useRecipeStore((state) =>
+    state.recipes.find((r) => r.id === id)
+  );
 
   if (!recipe) {
     return (
@@ -20,7 +22,9 @@ const RecipeDetails = () => {
       <h1>{recipe.title}</h1>
       <p>{recipe.description}</p>
       <div style={{ marginTop: 12 }}>
-        <Link to={`/edit/${recipe.id}`} style={{ marginRight: 8 }}>Edit</Link>
+        <Link to={`/edit/${recipe.id}`} style={{ marginRight: 8 }}>
+          Edit
+        </Link>
         <DeleteRecipeButton recipeId={recipe.id} />
       </div>
       <div style={{ marginTop: 16 }}>

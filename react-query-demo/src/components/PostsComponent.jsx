@@ -20,6 +20,10 @@ function PostsComponent() {
   } = useQuery({
     queryKey: ["posts"],
     queryFn: fetchPosts,
+    cacheTime: 1000 * 60 * 5, // ✅ Keep data in cache for 5 minutes
+    staleTime: 1000 * 30, // ✅ Data considered fresh for 30 seconds
+    refetchOnWindowFocus: false, // ✅ Prevent auto-refetch on window focus
+    keepPreviousData: true, // ✅ Maintain old data while fetching new
   });
 
   if (isLoading) {

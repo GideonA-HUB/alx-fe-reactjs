@@ -4,19 +4,31 @@ function RegistrationForm() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [errors, setErrors] = useState({});
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const newErrors = {};
 
-    if (!username || !email || !password) {
-      setError("All fields are required!");
-      return;
+    if (!username) {
+      newErrors.username = "Username is required";
+    }
+    if (!email) {
+      newErrors.email = "Email is required";
+    }
+    if (!password) {
+      newErrors.password = "Password is required";
     }
 
-    setError("");
-    console.log("User Registered:", { username, email, password });
-    alert("Registration successful!");
+    setErrors(newErrors);
+
+    if (Object.keys(newErrors).length === 0) {
+      console.log("User Registered:", { username, email, password });
+      alert("Registration successful!");
+      setUsername("");
+      setEmail("");
+      setPassword("");
+    }
   };
 
   return (
@@ -29,8 +41,9 @@ function RegistrationForm() {
           name="username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-          className="w-full p-2 mb-4 border rounded"
+          className="w-full p-2 mb-2 border rounded"
         />
+        {errors.username && <p className="text-red-600 text-sm mb-2">{errors.username}</p>}
 
         <label className="block mb-2 font-medium">Email:</label>
         <input
@@ -38,8 +51,9 @@ function RegistrationForm() {
           name="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="w-full p-2 mb-4 border rounded"
+          className="w-full p-2 mb-2 border rounded"
         />
+        {errors.email && <p className="text-red-600 text-sm mb-2">{errors.email}</p>}
 
         <label className="block mb-2 font-medium">Password:</label>
         <input
@@ -47,10 +61,9 @@ function RegistrationForm() {
           name="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="w-full p-2 mb-4 border rounded"
+          className="w-full p-2 mb-2 border rounded"
         />
-
-        {error && <p className="text-red-600 text-sm mb-4">{error}</p>}
+        {errors.password && <p className="text-red-600 text-sm mb-2">{errors.password}</p>}
 
         <button
           type="submit"

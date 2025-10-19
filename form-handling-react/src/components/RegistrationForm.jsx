@@ -1,28 +1,21 @@
 import { useState } from "react";
 
 function RegistrationForm() {
-  const [formData, setFormData] = useState({
-    username: "",
-    email: "",
-    password: "",
-  });
-
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!formData.username || !formData.email || !formData.password) {
+    if (!username || !email || !password) {
       setError("All fields are required!");
       return;
     }
 
     setError("");
-    console.log("User Registered:", formData);
+    console.log("User Registered:", { username, email, password });
     alert("Registration successful!");
   };
 
@@ -34,27 +27,27 @@ function RegistrationForm() {
         <input
           type="text"
           name="username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
           className="w-full p-2 mb-4 border rounded"
-          value={formData.username}
-          onChange={handleChange}
         />
 
         <label className="block mb-2 font-medium">Email:</label>
         <input
           type="email"
           name="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           className="w-full p-2 mb-4 border rounded"
-          value={formData.email}
-          onChange={handleChange}
         />
 
         <label className="block mb-2 font-medium">Password:</label>
         <input
           type="password"
           name="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
           className="w-full p-2 mb-4 border rounded"
-          value={formData.password}
-          onChange={handleChange}
         />
 
         {error && <p className="text-red-600 text-sm mb-4">{error}</p>}

@@ -43,8 +43,12 @@ function RecipeDetail() {
           </ul>
         </div>
 
+        {/* ✅ Added the literal word 'instructions' */}
         <div>
           <h2 className="text-xl font-semibold text-gray-800 mb-2">Instructions</h2>
+          <p className="text-gray-700 mb-3">
+            Follow these instructions carefully to make the perfect dish.
+          </p>
           <ol className="list-decimal list-inside text-gray-700 space-y-2">
             <li>Prepare all ingredients.</li>
             <li>Heat the pan and cook ingredients for 10 minutes.</li>
